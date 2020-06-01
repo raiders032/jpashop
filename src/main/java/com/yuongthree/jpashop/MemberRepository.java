@@ -1,5 +1,6 @@
 package com.yuongthree.jpashop;
 
+import com.yuongthree.jpashop.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
