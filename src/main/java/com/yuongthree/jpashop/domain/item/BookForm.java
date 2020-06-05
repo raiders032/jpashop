@@ -24,6 +24,5 @@ public class BookForm {
     @NotEmpty
     private String author;
 
-    @NotEmpty
     private String isbn;
 }

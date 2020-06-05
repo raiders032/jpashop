@@ -1,5 +1,7 @@
 package com.yuongthree.jpashop.service;
 
+import com.yuongthree.jpashop.domain.item.Book;
+import com.yuongthree.jpashop.domain.item.BookForm;
 import com.yuongthree.jpashop.domain.item.Item;
 import com.yuongthree.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,4 +30,12 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
+    @Transactional
+    public void updateItem(Long id, String author, String name, int price, int stockQuantity) {
+        Book book = (Book)itemRepository.findOne(id);
+        book.setAuthor(author);
+        book.setName(name);
+        book.setPrice(price);
+        book.setStockQuantity(stockQuantity);
+    }
 }
