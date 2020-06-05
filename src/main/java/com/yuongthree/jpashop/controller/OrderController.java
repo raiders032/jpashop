@@ -2,6 +2,7 @@ package com.yuongthree.jpashop.controller;
 
 import com.yuongthree.jpashop.domain.Member;
 import com.yuongthree.jpashop.domain.Order;
+import com.yuongthree.jpashop.domain.OrderSearch;
 import com.yuongthree.jpashop.domain.item.Item;
 import com.yuongthree.jpashop.service.ItemService;
 import com.yuongthree.jpashop.service.MemberService;
@@ -11,9 +12,7 @@ import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,6 +39,19 @@ public class OrderController {
         orderService.createOrder(memberId,itemId,count);
         return "redirect:/orders";
 
+    }
+
+    @GetMapping(value = "/orders")
+    public String orderList(@ModelAttribute("orderSearch")OrderSearch orderSearch, Model model) {
+        List<Order> orders = orderService.findOrders(orderSearch);
+        model.addAttribute("orders", orders);
+        return "order/orderList";
+    }
+
+    @PostMapping("/orders/{id}/cancel")
+    public String cancel(@PathVariable Long id){
+        orderService.cancel(id);
+        return"redirect:/orders";
     }
 
 }
