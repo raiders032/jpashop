@@ -1,9 +1,6 @@
 package com.yuongthree.jpashop.service;
 
-import com.yuongthree.jpashop.domain.Delivery;
-import com.yuongthree.jpashop.domain.Member;
-import com.yuongthree.jpashop.domain.Order;
-import com.yuongthree.jpashop.domain.OrderItem;
+import com.yuongthree.jpashop.domain.*;
 import com.yuongthree.jpashop.domain.item.Item;
 import com.yuongthree.jpashop.repository.ItemRepository;
 import com.yuongthree.jpashop.repository.MemberRepository;
@@ -30,6 +27,8 @@ public class OrderService {
 
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
+        delivery.setStatus(DeliveryStatus.READY);
+
 
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
