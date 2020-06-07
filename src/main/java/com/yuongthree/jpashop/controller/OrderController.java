@@ -8,8 +8,6 @@ import com.yuongthree.jpashop.service.ItemService;
 import com.yuongthree.jpashop.service.MemberService;
 import com.yuongthree.jpashop.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

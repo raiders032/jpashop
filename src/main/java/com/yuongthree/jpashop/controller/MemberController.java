@@ -25,7 +25,7 @@ public class MemberController {
         model.addAttribute(new MemberForm());
         return "members/createMemberForm";
     }
-
+    
     @PostMapping("/members/new")
     public String create(@Valid MemberForm memberForm, BindingResult result){
         if(result.hasErrors()){
