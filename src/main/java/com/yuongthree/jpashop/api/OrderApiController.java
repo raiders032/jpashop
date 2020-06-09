@@ -27,6 +27,13 @@ public class OrderApiController {
         return new OrderResponse<>(orderDtos);
     }
 
+    @GetMapping("/api/v3/orders")
+    public OrderResponse<List<OrderDto>> orderV3(){
+        List<Order> orders = orderRepository.findAllWithItem();
+        List<OrderDto> orderDtos = orders.stream().map(OrderDto::new).collect(Collectors.toList());
+        return new OrderResponse<>(orderDtos);
+    }
+
     @AllArgsConstructor
     @Getter
     static class OrderResponse<T>{
