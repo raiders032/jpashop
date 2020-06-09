@@ -1,5 +1,6 @@
 package com.yuongthree.jpashop.repository;
 
+import com.yuongthree.jpashop.api.OrderSimpleApiController;
 import com.yuongthree.jpashop.domain.Order;
 import com.yuongthree.jpashop.domain.OrderSearch;
 import lombok.RequiredArgsConstructor;
@@ -64,4 +65,5 @@ public class OrderRepository {
                 "join fetch o.delivery d "
                 ,Order.class).getResultList();
     }
+
 }

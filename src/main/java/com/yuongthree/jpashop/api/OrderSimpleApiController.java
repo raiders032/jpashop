@@ -5,7 +5,6 @@ import com.yuongthree.jpashop.domain.Order;
 import com.yuongthree.jpashop.domain.OrderSearch;
 import com.yuongthree.jpashop.domain.OrderStatus;
 import com.yuongthree.jpashop.repository.OrderRepository;
-import javafx.beans.property.SimpleListProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
