@@ -20,6 +20,19 @@ public class OrderApiController {
 
     private final OrderRepository orderRepository;
 
+    @GetMapping("/api/v1/orders")
+    public List<Order> ordersV1() {
+        List<Order> all = orderRepository.findAll();
+        for (Order order : all) {
+            order.getMember().getName(); //Lazy 강제 초기화
+            order.getDelivery().getAddress(); //Lazy 강제 초기환
+            List<OrderItem> orderItems = order.getOrderItems();
+            orderItems.stream().forEach(o -> o.getItem().getName()); //Lazy 강제 초기화
+        }
+        return all;
+    }
+
+
     @GetMapping("/api/v2/orders")
     public OrderResponse<List<OrderDto>> ordersV2(){
         List<Order> orders = orderRepository.findAllByString(new OrderSearch());

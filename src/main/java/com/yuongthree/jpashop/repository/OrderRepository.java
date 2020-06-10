@@ -1,6 +1,6 @@
 package com.yuongthree.jpashop.repository;
 
-import com.yuongthree.jpashop.api.OrderSimpleApiController;
+
 import com.yuongthree.jpashop.domain.Order;
 import com.yuongthree.jpashop.domain.OrderSearch;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class OrderRepository {
         return em.find(Order.class,id);
     }
 
-    public List<Order> findAllByString(OrderSearch orderSearch) {
+    public List<Order>  findAllByString(OrderSearch orderSearch) {
         //language=JPAQL
         String jpql = "select o From Order o join o.member m";
         boolean isFirstCondition = true;
@@ -85,5 +85,9 @@ public class OrderRepository {
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
+    }
+
+    public List<Order> findAll() {
+        return em.createQuery("select o from Order o",Order.class).getResultList();
     }
 }
