@@ -21,6 +21,16 @@ public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
 
+    @GetMapping("/api/v1/simple-orders")
+    public List<Order> ordersV1() {
+        List<Order> all = orderRepository.findAll();
+        for (Order order : all) {
+            order.getMember().getName(); //Lazy 강제 초기화
+            order.getDelivery().getAddress(); //Lazy 강제 초기환
+        }
+        return all;
+    }
+
     @GetMapping("/api/v2/simple-orders")
     public Result<List<SimpleOrderDto>> ordersV2(){
         List<Order> orders = orderRepository.findAllByString(new OrderSearch());
